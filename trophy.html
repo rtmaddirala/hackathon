@@ -1,0 +1,41 @@
+<style>
+    .wrapper {
+        position: relative;
+        height: 500px;
+    }
+    .wrapper * {
+        position: absolute;
+    }
+    #draw{
+        width: 400;
+        height: 400;
+        background-color: #c9dbdc;
+    }
+</style>
+
+<div class="wrapper">
+    <canvas id="draw"></canvas>
+</div>
+
+<script>
+        var _RAD = Math.PI / 180;
+
+        const canvasEditor = document.querySelector("#draw");
+        const context = canvasEditor.getContext("2d");
+        function arc(centerX, centerY, radius, startingAngle, endingAngle, counterclockwise){
+            context.arc(centerX, centerY, radius, startingAngle, endingAngle, counterclockwise);
+        }
+
+        window.onload = function(){
+            arc(150, 150, 80, 1.2 * Math.PI, 1.8 * Math.PI, false);
+            context.stroke();
+        };    
+
+        function findPointOnCircle(c, r, a)
+        {
+           return {
+               x: c.x + r * Math.cos(a*_RAD) - r * Math.sin(a*_RAD),
+               y: c.y + r * Math.sin(a*_RAD) + r * Math.cos(a*_RAD)
+             };
+        }
+</script>        
